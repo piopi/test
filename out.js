@@ -4,8 +4,22 @@
   var __defProp = Object.defineProperty;
   var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
   var __getOwnPropNames = Object.getOwnPropertyNames;
+  var __getOwnPropSymbols = Object.getOwnPropertySymbols;
   var __getProtoOf = Object.getPrototypeOf;
   var __hasOwnProp = Object.prototype.hasOwnProperty;
+  var __propIsEnum = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+  var __spreadValues = (a, b) => {
+    for (var prop in b || (b = {}))
+      if (__hasOwnProp.call(b, prop))
+        __defNormalProp(a, prop, b[prop]);
+    if (__getOwnPropSymbols)
+      for (var prop of __getOwnPropSymbols(b)) {
+        if (__propIsEnum.call(b, prop))
+          __defNormalProp(a, prop, b[prop]);
+      }
+    return a;
+  };
   var __commonJS = (cb, mod) => function __require() {
     return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
   };
@@ -25,6 +39,7 @@
     isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
     mod
   ));
+  var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 
   // node_modules/object-assign/index.js
   var require_object_assign = __commonJS({
@@ -562,7 +577,7 @@
             }
             return element;
           };
-          function createElement2(type, config, children) {
+          function createElement3(type, config, children) {
             var propName;
             var props = {};
             var key = null;
@@ -1017,26 +1032,26 @@
             }
             return lazyType;
           }
-          function forwardRef2(render) {
+          function forwardRef2(render2) {
             {
-              if (render != null && render.$$typeof === REACT_MEMO_TYPE) {
+              if (render2 != null && render2.$$typeof === REACT_MEMO_TYPE) {
                 error("forwardRef requires a render function but received a `memo` component. Instead of forwardRef(memo(...)), use memo(forwardRef(...)).");
-              } else if (typeof render !== "function") {
-                error("forwardRef requires a render function but was given %s.", render === null ? "null" : typeof render);
+              } else if (typeof render2 !== "function") {
+                error("forwardRef requires a render function but was given %s.", render2 === null ? "null" : typeof render2);
               } else {
-                if (render.length !== 0 && render.length !== 2) {
-                  error("forwardRef render functions accept exactly two parameters: props and ref. %s", render.length === 1 ? "Did you forget to use the ref parameter?" : "Any additional parameter will be undefined.");
+                if (render2.length !== 0 && render2.length !== 2) {
+                  error("forwardRef render functions accept exactly two parameters: props and ref. %s", render2.length === 1 ? "Did you forget to use the ref parameter?" : "Any additional parameter will be undefined.");
                 }
               }
-              if (render != null) {
-                if (render.defaultProps != null || render.propTypes != null) {
+              if (render2 != null) {
+                if (render2.defaultProps != null || render2.propTypes != null) {
                   error("forwardRef render functions do not support propTypes or defaultProps. Did you accidentally pass a React component?");
                 }
               }
             }
             var elementType = {
               $$typeof: REACT_FORWARD_REF_TYPE,
-              render
+              render: render2
             };
             {
               var ownName;
@@ -1048,8 +1063,8 @@
                 },
                 set: function(name) {
                   ownName = name;
-                  if (render.displayName == null) {
-                    render.displayName = name;
+                  if (render2.displayName == null) {
+                    render2.displayName = name;
                   }
                 }
               });
@@ -1630,7 +1645,7 @@
                 error("React.createElement: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s", typeString, info);
               }
             }
-            var element = createElement2.apply(this, arguments);
+            var element = createElement3.apply(this, arguments);
             if (element == null) {
               return element;
             }
@@ -7986,15 +8001,15 @@
               eventTypePrefix = "pointer";
             }
             var fromNode = from == null ? win : getNodeFromInstance(from);
-            var toNode = to == null ? win : getNodeFromInstance(to);
+            var toNode2 = to == null ? win : getNodeFromInstance(to);
             var leave = new SyntheticEventCtor(leaveEventType, eventTypePrefix + "leave", from, nativeEvent, nativeEventTarget);
             leave.target = fromNode;
-            leave.relatedTarget = toNode;
+            leave.relatedTarget = toNode2;
             var enter = null;
             var nativeTargetInst = getClosestInstanceFromNode(nativeEventTarget);
             if (nativeTargetInst === targetInst) {
               var enterEvent = new SyntheticEventCtor(enterEventType, eventTypePrefix + "enter", to, nativeEvent, nativeEventTarget);
-              enterEvent.target = toNode;
+              enterEvent.target = toNode2;
               enterEvent.relatedTarget = fromNode;
               enter = enterEvent;
             }
@@ -8157,7 +8172,7 @@
               }
             }
           }
-          function isTextNode(node) {
+          function isTextNode2(node) {
             return node && node.nodeType === TEXT_NODE;
           }
           function containsNode(outerNode, innerNode) {
@@ -8165,9 +8180,9 @@
               return false;
             } else if (outerNode === innerNode) {
               return true;
-            } else if (isTextNode(outerNode)) {
+            } else if (isTextNode2(outerNode)) {
               return false;
-            } else if (isTextNode(innerNode)) {
+            } else if (isTextNode2(innerNode)) {
               return containsNode(outerNode, innerNode.parentNode);
             } else if ("contains" in outerNode) {
               return outerNode.contains(innerNode);
@@ -8799,7 +8814,7 @@
           var SUPPRESS_HYDRATION_WARNING = "suppressHydrationWarning";
           var AUTOFOCUS = "autoFocus";
           var CHILDREN = "children";
-          var STYLE = "style";
+          var STYLE2 = "style";
           var HTML$1 = "__html";
           var HTML_NAMESPACE$1 = Namespaces.html;
           var warnedUnknownTags;
@@ -8900,7 +8915,7 @@
                 continue;
               }
               var nextProp = nextProps[propKey];
-              if (propKey === STYLE) {
+              if (propKey === STYLE2) {
                 {
                   if (nextProp) {
                     Object.freeze(nextProp);
@@ -8941,7 +8956,7 @@
             for (var i = 0; i < updatePayload.length; i += 2) {
               var propKey = updatePayload[i];
               var propValue = updatePayload[i + 1];
-              if (propKey === STYLE) {
+              if (propKey === STYLE2) {
                 setValueForStyles(domElement, propValue);
               } else if (propKey === DANGEROUSLY_SET_INNER_HTML) {
                 setInnerHTML(domElement, propValue);
@@ -8952,7 +8967,7 @@
               }
             }
           }
-          function createElement2(type, props, rootContainerElement, parentNamespace) {
+          function createElement3(type, props, rootContainerElement, parentNamespace) {
             var isCustomComponentTag;
             var ownerDocument = getOwnerDocumentFromRootContainer(rootContainerElement);
             var domElement;
@@ -9133,7 +9148,7 @@
               if (nextProps.hasOwnProperty(propKey) || !lastProps.hasOwnProperty(propKey) || lastProps[propKey] == null) {
                 continue;
               }
-              if (propKey === STYLE) {
+              if (propKey === STYLE2) {
                 var lastStyle = lastProps[propKey];
                 for (styleName in lastStyle) {
                   if (lastStyle.hasOwnProperty(styleName)) {
@@ -9160,7 +9175,7 @@
               if (!nextProps.hasOwnProperty(propKey) || nextProp === lastProp || nextProp == null && lastProp == null) {
                 continue;
               }
-              if (propKey === STYLE) {
+              if (propKey === STYLE2) {
                 {
                   if (nextProp) {
                     Object.freeze(nextProp);
@@ -9225,9 +9240,9 @@
             }
             if (styleUpdates) {
               {
-                validateShorthandPropertyCollisionInDev(styleUpdates, nextProps[STYLE]);
+                validateShorthandPropertyCollisionInDev(styleUpdates, nextProps[STYLE2]);
               }
-              (updatePayload = updatePayload || []).push(STYLE, styleUpdates);
+              (updatePayload = updatePayload || []).push(STYLE2, styleUpdates);
             }
             return updatePayload;
           }
@@ -9384,7 +9399,7 @@
                       warnForPropDifference(propKey, serverHTML, expectedHTML);
                     }
                   }
-                } else if (propKey === STYLE) {
+                } else if (propKey === STYLE2) {
                   extraAttributeNames.delete(propKey);
                   if (canDiffStyleForHydrationWarning) {
                     var expectedStyle = createDangerousStringForStyles(nextProp);
@@ -9847,7 +9862,7 @@
               }
               parentNamespace = hostContextDev.namespace;
             }
-            var domElement = createElement2(type, props, rootContainerInstance, parentNamespace);
+            var domElement = createElement3(type, props, rootContainerInstance, parentNamespace);
             precacheFiberNode(internalInstanceHandle, domElement);
             updateFiberProps(domElement, props);
             return domElement;
@@ -10580,7 +10595,7 @@
           var immediateQueueCallbackNode = null;
           var isFlushingSyncQueue = false;
           var initialTimeMs$1 = Scheduler_now$1();
-          var now = initialTimeMs$1 < 1e4 ? Scheduler_now$1 : function() {
+          var now2 = initialTimeMs$1 < 1e4 ? Scheduler_now$1 : function() {
             return Scheduler_now$1() - initialTimeMs$1;
           };
           function getCurrentPriorityLevel() {
@@ -14874,18 +14889,18 @@
                 }
               }
             }
-            var render2 = Component.render;
+            var render3 = Component.render;
             var ref = workInProgress2.ref;
             var nextChildren;
             prepareToReadContext(workInProgress2, renderLanes2);
             {
               ReactCurrentOwner$1.current = workInProgress2;
               setIsRendering(true);
-              nextChildren = renderWithHooks(current2, workInProgress2, render2, nextProps, ref, renderLanes2);
+              nextChildren = renderWithHooks(current2, workInProgress2, render3, nextProps, ref, renderLanes2);
               if (workInProgress2.mode & StrictMode) {
                 disableLogs();
                 try {
-                  nextChildren = renderWithHooks(current2, workInProgress2, render2, nextProps, ref, renderLanes2);
+                  nextChildren = renderWithHooks(current2, workInProgress2, render3, nextProps, ref, renderLanes2);
                 } finally {
                   reenableLogs();
                 }
@@ -16063,9 +16078,9 @@
               }
             }
             var newProps = workInProgress2.pendingProps;
-            var render2 = newProps.children;
+            var render3 = newProps.children;
             {
-              if (typeof render2 !== "function") {
+              if (typeof render3 !== "function") {
                 error("A context consumer was rendered with multiple children, or a child that isn't a function. A context consumer expects a single child that is a function. If you did pass a function, make sure there is no trailing or leading whitespace around it.");
               }
             }
@@ -16075,7 +16090,7 @@
             {
               ReactCurrentOwner$1.current = workInProgress2;
               setIsRendering(true);
-              newChildren = render2(newValue);
+              newChildren = render3(newValue);
               setIsRendering(false);
             }
             workInProgress2.flags |= PerformedWork;
@@ -16644,7 +16659,7 @@
                         row = row.sibling;
                       }
                     }
-                    if (renderState.tail !== null && now() > getRenderTargetTime()) {
+                    if (renderState.tail !== null && now2() > getRenderTargetTime()) {
                       workInProgress2.flags |= DidCapture;
                       didSuspendAlready = true;
                       cutOffTailIfNeeded(renderState, false);
@@ -16679,7 +16694,7 @@
                       // The time it took to render last row is greater than the remaining
                       // time we have to render. So rendering one more row would likely
                       // exceed it.
-                      now() * 2 - renderState.renderingStartTime > getRenderTargetTime() && renderLanes2 !== OffscreenLane
+                      now2() * 2 - renderState.renderingStartTime > getRenderTargetTime() && renderLanes2 !== OffscreenLane
                     ) {
                       workInProgress2.flags |= DidCapture;
                       didSuspendAlready = true;
@@ -16708,7 +16723,7 @@
                   renderState.rendering = next;
                   renderState.tail = next.sibling;
                   renderState.lastEffect = workInProgress2.lastEffect;
-                  renderState.renderingStartTime = now();
+                  renderState.renderingStartTime = now2();
                   next.sibling = null;
                   var suspenseContext = suspenseStackCursor.current;
                   if (didSuspendAlready) {
@@ -17957,7 +17972,7 @@
           var workInProgressRootRenderTargetTime = Infinity;
           var RENDER_TIMEOUT_MS = 500;
           function resetRenderTimer() {
-            workInProgressRootRenderTargetTime = now() + RENDER_TIMEOUT_MS;
+            workInProgressRootRenderTargetTime = now2() + RENDER_TIMEOUT_MS;
           }
           function getRenderTargetTime() {
             return workInProgressRootRenderTargetTime;
@@ -17990,12 +18005,12 @@
           }
           function requestEventTime() {
             if ((executionContext & (RenderContext | CommitContext)) !== NoContext) {
-              return now();
+              return now2();
             }
             if (currentEventTime !== NoTimestamp) {
               return currentEventTime;
             }
-            currentEventTime = now();
+            currentEventTime = now2();
             return currentEventTime;
           }
           function requestUpdateLane(fiber) {
@@ -18195,7 +18210,7 @@
                 var fatalError = workInProgressRootFatalError;
                 prepareFreshStack(root2, NoLanes);
                 markRootSuspended$1(root2, lanes);
-                ensureRootIsScheduled(root2, now());
+                ensureRootIsScheduled(root2, now2());
                 throw fatalError;
               }
               var finishedWork = root2.current.alternate;
@@ -18203,7 +18218,7 @@
               root2.finishedLanes = lanes;
               finishConcurrentRender(root2, exitStatus, lanes);
             }
-            ensureRootIsScheduled(root2, now());
+            ensureRootIsScheduled(root2, now2());
             if (root2.callbackNode === originalCallbackNode) {
               return performConcurrentWorkOnRoot.bind(null, root2);
             }
@@ -18230,7 +18245,7 @@
                 markRootSuspended$1(root2, lanes);
                 if (includesOnlyRetries(lanes) && // do not delay if we're inside an act() scope
                 !shouldForceFlushFallbacksInDEV()) {
-                  var msUntilTimeout = globalMostRecentFallbackTime + FALLBACK_THROTTLE_MS - now();
+                  var msUntilTimeout = globalMostRecentFallbackTime + FALLBACK_THROTTLE_MS - now2();
                   if (msUntilTimeout > 10) {
                     var nextLanes = getNextLanes(root2, NoLanes);
                     if (nextLanes !== NoLanes) {
@@ -18257,7 +18272,7 @@
                 if (!shouldForceFlushFallbacksInDEV()) {
                   var mostRecentEventTime = getMostRecentEventTime(root2, lanes);
                   var eventTimeMs = mostRecentEventTime;
-                  var timeElapsedMs = now() - eventTimeMs;
+                  var timeElapsedMs = now2() - eventTimeMs;
                   var _msUntilTimeout = jnd(timeElapsedMs) - timeElapsedMs;
                   if (_msUntilTimeout > 10) {
                     root2.timeoutHandle = scheduleTimeout(commitRoot.bind(null, root2), _msUntilTimeout);
@@ -18320,14 +18335,14 @@
               var fatalError = workInProgressRootFatalError;
               prepareFreshStack(root2, NoLanes);
               markRootSuspended$1(root2, lanes);
-              ensureRootIsScheduled(root2, now());
+              ensureRootIsScheduled(root2, now2());
               throw fatalError;
             }
             var finishedWork = root2.current.alternate;
             root2.finishedWork = finishedWork;
             root2.finishedLanes = lanes;
             commitRoot(root2);
-            ensureRootIsScheduled(root2, now());
+            ensureRootIsScheduled(root2, now2());
             return null;
           }
           function flushDiscreteUpdates() {
@@ -18348,7 +18363,7 @@
               rootsWithPendingDiscreteUpdates = null;
               roots.forEach(function(root2) {
                 markDiscreteUpdatesExpired(root2);
-                ensureRootIsScheduled(root2, now());
+                ensureRootIsScheduled(root2, now2());
               });
             }
             flushSyncCallbackQueue();
@@ -18526,7 +18541,7 @@
             }
           }
           function markCommitTimeOfFallback() {
-            globalMostRecentFallbackTime = now();
+            globalMostRecentFallbackTime = now2();
           }
           function markSkippedUpdateLanes(lane) {
             workInProgressRootSkippedLanes = mergeLanes(lane, workInProgressRootSkippedLanes);
@@ -18939,7 +18954,7 @@
             {
               onCommitRoot$1();
             }
-            ensureRootIsScheduled(root2, now());
+            ensureRootIsScheduled(root2, now2());
             if (hasUncaughtError) {
               hasUncaughtError = false;
               var _error3 = firstUncaughtError;
@@ -19262,7 +19277,7 @@
             var eventTime = requestEventTime();
             markRootPinged(root2, pingedLanes);
             if (workInProgressRoot === root2 && isSubsetOfLanes(workInProgressRootRenderLanes, pingedLanes)) {
-              if (workInProgressRootExitStatus === RootSuspendedWithDelay || workInProgressRootExitStatus === RootSuspended && includesOnlyRetries(workInProgressRootRenderLanes) && now() - globalMostRecentFallbackTime < FALLBACK_THROTTLE_MS) {
+              if (workInProgressRootExitStatus === RootSuspendedWithDelay || workInProgressRootExitStatus === RootSuspended && includesOnlyRetries(workInProgressRootRenderLanes) && now2() - globalMostRecentFallbackTime < FALLBACK_THROTTLE_MS) {
                 prepareFreshStack(root2, NoLanes);
               } else {
                 workInProgressRootPingedLanes = mergeLanes(workInProgressRootPingedLanes, pingedLanes);
@@ -20964,7 +20979,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
             }
             return legacyRenderSubtreeIntoContainer(null, element, container, true, callback);
           }
-          function render(element, container, callback) {
+          function render2(element, container, callback) {
             if (!isValidContainer(container)) {
               {
                 throw Error("Target container is not a DOM element.");
@@ -21101,7 +21116,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
           exports.findDOMNode = findDOMNode;
           exports.flushSync = flushSync;
           exports.hydrate = hydrate;
-          exports.render = render;
+          exports.render = render2;
           exports.unmountComponentAtNode = unmountComponentAtNode;
           exports.unstable_batchedUpdates = batchedUpdates$1;
           exports.unstable_createPortal = unstable_createPortal;
@@ -21985,103 +22000,1493 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     }
   });
 
-  // node_modules/@remote-dom/react/build/esm/component.mjs
-  var import_react = __toESM(require_react(), 1);
-  function createRemoteComponent(tag, Element2 = customElements.get(tag), {
-    slotProps = true,
-    eventProps = {}
-  } = {}) {
-    const normalizeSlotProps = Boolean(slotProps);
-    const slotPropWrapperOption = (typeof slotProps === "object" ? slotProps.wrapper : void 0) ?? true;
-    const slotPropWrapper = typeof slotPropWrapperOption === "string" ? slotPropWrapperOption : slotPropWrapperOption ? "remote-fragment" : false;
-    const RemoteComponent = /* @__PURE__ */ (0, import_react.forwardRef)(function RemoteComponent2(props, ref) {
-      const internalRef = (0, import_react.useRef)();
-      const lastRemotePropertiesRef = (0, import_react.useRef)();
-      const remoteProperties2 = {};
-      const children = toChildren(props.children);
-      for (const prop in props) {
-        const propValue = props[prop];
-        if (prop === "slot") {
-          remoteProperties2.slot = propValue;
-          continue;
-        }
-        if (normalizeSlotProps && Element2.remoteSlotDefinitions.has(prop) && /* @__PURE__ */ (0, import_react.isValidElement)(propValue)) {
-          if (!slotPropWrapper) {
-            children.push(/* @__PURE__ */ (0, import_react.cloneElement)(propValue, {
-              slot: prop
-            }));
-          } else {
-            children.push(/* @__PURE__ */ (0, import_react.createElement)(slotPropWrapper, {
-              slot: prop
-            }, propValue));
-          }
-          continue;
-        }
-        remoteProperties2[prop] = propValue;
-      }
-      (0, import_react.useLayoutEffect)(() => {
-        const element = internalRef.current;
-        if (element == null) return;
-        for (const prop in remoteProperties2) {
-          if (prop === "children") continue;
-          const oldValue = lastRemotePropertiesRef.current?.[prop];
-          const newValue = remoteProperties2[prop];
-          if (oldValue === newValue) continue;
-          const eventProp = eventProps[prop];
-          if (eventProp) {
-            const eventName = eventProp.event;
-            if (oldValue) element.removeEventListener(eventName, oldValue);
-            if (newValue) element.addEventListener(eventName, newValue);
-            continue;
-          }
-          if (prop in element) {
-            element[prop] = remoteProperties2[prop];
-            continue;
-          }
-          if (newValue == null) {
-            element.removeAttribute(prop);
-          } else {
-            element.setAttribute(prop, String(newValue));
-          }
-        }
-        lastRemotePropertiesRef.current = remoteProperties2;
+  // node_modules/@remote-dom/polyfill/build/esm/constants.mjs
+  var NAME = Symbol("name");
+  var VALUE = Symbol("value");
+  var NS = Symbol("ns");
+  var OWNER_ELEMENT = Symbol("owner");
+  var OWNER_DOCUMENT = Symbol("owner_document");
+  var ATTRIBUTES = Symbol("attributes");
+  var PREV = Symbol("prev");
+  var NEXT = Symbol("next");
+  var CHILD = Symbol("child");
+  var PARENT = Symbol("parent");
+  var DATA = Symbol("data");
+  var LISTENERS = Symbol("listeners");
+  var IS_TRUSTED = Symbol("isTrusted");
+  var PATH = Symbol("path");
+  var STOP_IMMEDIATE_PROPAGATION = Symbol("stop_immediate_propagation");
+  var CONTENT = Symbol("content");
+  var HOOKS = Symbol("hooks");
+  var IS_CONNECTED = Symbol("is_connected");
+  var NodeType = /* @__PURE__ */ function(NodeType2) {
+    NodeType2[NodeType2["NODE"] = 0] = "NODE";
+    NodeType2[NodeType2["ELEMENT_NODE"] = 1] = "ELEMENT_NODE";
+    NodeType2[NodeType2["ATTRIBUTE_NODE"] = 2] = "ATTRIBUTE_NODE";
+    NodeType2[NodeType2["TEXT_NODE"] = 3] = "TEXT_NODE";
+    NodeType2[NodeType2["CDATA_SECTION_NODE"] = 4] = "CDATA_SECTION_NODE";
+    NodeType2[NodeType2["ENTITY_REFERENCE_NODE"] = 5] = "ENTITY_REFERENCE_NODE";
+    NodeType2[NodeType2["ENTITY_NODE"] = 6] = "ENTITY_NODE";
+    NodeType2[NodeType2["PROCESSING_INSTRUCTION_NODE"] = 7] = "PROCESSING_INSTRUCTION_NODE";
+    NodeType2[NodeType2["COMMENT_NODE"] = 8] = "COMMENT_NODE";
+    NodeType2[NodeType2["DOCUMENT_NODE"] = 9] = "DOCUMENT_NODE";
+    NodeType2[NodeType2["DOCUMENT_TYPE_NODE"] = 10] = "DOCUMENT_TYPE_NODE";
+    NodeType2[NodeType2["DOCUMENT_FRAGMENT_NODE"] = 11] = "DOCUMENT_FRAGMENT_NODE";
+    return NodeType2;
+  }({});
+  var NamespaceURI = /* @__PURE__ */ function(NamespaceURI2) {
+    NamespaceURI2["XHTML"] = "http://www.w3.org/1999/xhtml";
+    NamespaceURI2["SVG"] = "http://www.w3.org/2000/svg";
+    return NamespaceURI2;
+  }({});
+
+  // node_modules/@remote-dom/polyfill/build/esm/Event.mjs
+  var EventPhase = /* @__PURE__ */ function(EventPhase2) {
+    EventPhase2[EventPhase2["NONE"] = 0] = "NONE";
+    EventPhase2[EventPhase2["CAPTURING_PHASE"] = 1] = "CAPTURING_PHASE";
+    EventPhase2[EventPhase2["AT_TARGET"] = 2] = "AT_TARGET";
+    EventPhase2[EventPhase2["BUBBLING_PHASE"] = 3] = "BUBBLING_PHASE";
+    return EventPhase2;
+  }({});
+  var CAPTURE_MARKER = "@";
+  var now = typeof performance === "undefined" ? Date.now : performance.now.bind(performance);
+  var _a, _b;
+  _b = PATH, _a = STOP_IMMEDIATE_PROPAGATION;
+  var Event = class {
+    constructor(type, options) {
+      // NONE = EventPhase.NONE;
+      // CAPTURING_PHASE = EventPhase.CAPTURING_PHASE;
+      // AT_TARGET = EventPhase.AT_TARGET;
+      // BUBBLING_PHASE = EventPhase.BUBBLING_PHASE;
+      __publicField(this, "timeStamp", (() => now())());
+      __publicField(this, "target", null);
+      __publicField(this, "currentTarget", null);
+      __publicField(this, "srcElement", null);
+      __publicField(this, "bubbles", false);
+      __publicField(this, "cancelable", false);
+      __publicField(this, "composed", false);
+      __publicField(this, "defaultPrevented", false);
+      __publicField(this, "cancelBubble", false);
+      __publicField(this, "eventPhase", 0);
+      // private inPassiveListener = false;
+      __publicField(this, _b, []);
+      __publicField(this, _a, false);
+      this.type = type;
+      Object.defineProperty(this, IS_TRUSTED, {
+        writable: true,
+        value: false
       });
-      return /* @__PURE__ */ (0, import_react.createElement)(tag, {
-        ref: (refValue) => {
-          internalRef.current = refValue;
-          if (typeof ref === "function") ref(refValue);
-          else if (ref != null) ref.current = refValue;
+      if (options) {
+        if (options.bubbles) this.bubbles = options.bubbles;
+        if (options.cancelable) this.cancelable = options.cancelable;
+        if (options.composed) this.composed = options.composed;
+      }
+    }
+    get isTrusted() {
+      return this[IS_TRUSTED];
+    }
+    composedPath() {
+      return this[PATH];
+    }
+    stopPropagation() {
+      this.cancelBubble = true;
+    }
+    stopImmediatePropagation() {
+      this[STOP_IMMEDIATE_PROPAGATION] = true;
+      this.cancelBubble = true;
+    }
+    preventDefault() {
+      this.defaultPrevented = true;
+    }
+    set returnValue(value) {
+      this.defaultPrevented = value;
+    }
+    get returnValue() {
+      return this.defaultPrevented;
+    }
+    /** @deprecated */
+    initEvent(type, bubbles, cancelable) {
+      this.type = type;
+      this.bubbles = Boolean(bubbles);
+      this.cancelable = Boolean(cancelable);
+    }
+  };
+  __publicField(Event, "NONE", (() => EventPhase.NONE)());
+  __publicField(Event, "CAPTURING_PHASE", (() => EventPhase.CAPTURING_PHASE)());
+  __publicField(Event, "AT_TARGET", (() => EventPhase.AT_TARGET)());
+  __publicField(Event, "BUBBLING_PHASE", (() => EventPhase.BUBBLING_PHASE)());
+  function fireEvent(event, currentTarget, phase) {
+    const listeners = currentTarget[LISTENERS];
+    const list = listeners == null ? void 0 : listeners.get(`${event.type}${phase === EventPhase.CAPTURING_PHASE ? CAPTURE_MARKER : ""}`);
+    if (!list) return;
+    for (const listener of list) {
+      event.eventPhase = event.target === currentTarget ? EventPhase.AT_TARGET : phase;
+      event.currentTarget = currentTarget;
+      try {
+        if (typeof listener === "object") {
+          listener.handleEvent(event);
+        } else {
+          listener.call(currentTarget, event);
         }
-      }, ...children);
+      } catch (err) {
+        setTimeout(thrower, 0, err);
+      }
+      if (event[STOP_IMMEDIATE_PROPAGATION]) break;
+    }
+  }
+  function thrower(error) {
+    throw error;
+  }
+
+  // node_modules/@remote-dom/polyfill/build/esm/EventTarget.mjs
+  var ONCE_LISTENERS = Symbol("onceListeners");
+  var _a2, _b2, _c;
+  _c = LISTENERS, _b2 = ONCE_LISTENERS, _a2 = OWNER_DOCUMENT;
+  var EventTarget = class {
+    constructor() {
+      __publicField(this, _c, /* @__PURE__ */ (() => void 0)());
+      __publicField(this, _b2, /* @__PURE__ */ (() => void 0)());
+      /**
+       * Property set by entities that extend this class that are part of the DOM tree.
+       * @internal
+       */
+      __publicField(this, _a2, /* @__PURE__ */ (() => void 0)());
+    }
+    addEventListener(type, listener, options) {
+      var _a16, _b13, _c6;
+      if (listener == null) return;
+      const capture = options === true || options && options.capture === true;
+      const once = typeof options === "object" && options.once === true;
+      const signal = typeof options === "object" ? options.signal : void 0;
+      const key = `${type}${capture ? CAPTURE_MARKER : ""}`;
+      let normalizedListener = listener;
+      if (once) {
+        normalizedListener = function normalizedListener2(...args) {
+          this.removeEventListener(type, listener, options);
+          return typeof listener === "object" ? listener.handleEvent(...args) : listener.call(this, ...args);
+        };
+        let onceListeners = this[ONCE_LISTENERS];
+        if (!onceListeners) {
+          onceListeners = /* @__PURE__ */ new WeakMap();
+          this[ONCE_LISTENERS] = onceListeners;
+        }
+        onceListeners.set(listener, normalizedListener);
+      }
+      let listeners = this[LISTENERS];
+      if (!listeners) {
+        listeners = /* @__PURE__ */ new Map();
+        this[LISTENERS] = listeners;
+      }
+      let list = listeners.get(key);
+      if (!list) {
+        list = /* @__PURE__ */ new Set();
+        listeners.set(key, list);
+      }
+      if (list.has(normalizedListener)) return;
+      signal == null ? void 0 : signal.addEventListener("abort", () => {
+        removeEventListener.call(this, type, listener, options);
+      }, {
+        once: true
+      });
+      list.add(normalizedListener);
+      (_c6 = (_a16 = this[OWNER_DOCUMENT]) == null ? void 0 : (_b13 = _a16.defaultView[HOOKS]).addEventListener) == null ? void 0 : _c6.call(_b13, this, type, listener, options);
+    }
+    removeEventListener(type, listener, options) {
+      return removeEventListener.call(this, type, listener, options);
+    }
+    // function isChildNode(node: EventTarget): node is ChildNode {
+    //   return PARENT in node;
+    // }
+    dispatchEvent(event) {
+      const path = [];
+      let target = this;
+      while (target != null) {
+        path.push(target);
+        target = target.parentNode;
+      }
+      event.target = this;
+      event.srcElement = this;
+      event[PATH] = path;
+      for (let i = path.length; i--; ) {
+        fireEvent(event, path[i], EventPhase.CAPTURING_PHASE);
+        if (event.cancelBubble) return event.defaultPrevented;
+      }
+      const bubblePath = event.bubbles ? path : path.slice(0, 1);
+      for (let i = 0; i < bubblePath.length; i++) {
+        fireEvent(event, bubblePath[i], EventPhase.BUBBLING_PHASE);
+        if (event.cancelBubble) return event.defaultPrevented;
+      }
+      return event.defaultPrevented;
+    }
+  };
+  function removeEventListener(type, listener, options) {
+    var _a16, _b13, _c6, _d3, _e2;
+    if (listener == null) return;
+    const onceListeners = this[ONCE_LISTENERS];
+    const normalizedListener = (_a16 = onceListeners == null ? void 0 : onceListeners.get(listener)) != null ? _a16 : listener;
+    onceListeners == null ? void 0 : onceListeners.delete(listener);
+    const capture = options === true || options && options.capture === true;
+    const key = `${type}${capture ? CAPTURE_MARKER : ""}`;
+    const list = (_b13 = this[LISTENERS]) == null ? void 0 : _b13.get(key);
+    if (list) {
+      const deleted = list.delete(normalizedListener);
+      if (deleted) {
+        (_e2 = (_c6 = this[OWNER_DOCUMENT]) == null ? void 0 : (_d3 = _c6.defaultView[HOOKS]).removeEventListener) == null ? void 0 : _e2.call(_d3, this, type, listener, options);
+      }
+    }
+  }
+
+  // node_modules/@remote-dom/polyfill/build/esm/shared.mjs
+  function isCharacterData(node) {
+    return DATA in node;
+  }
+  function isTextNode(node) {
+    return node.nodeType === NodeType.TEXT_NODE;
+  }
+  function isCommentNode(node) {
+    return node.nodeType === NodeType.COMMENT_NODE;
+  }
+  function isElementNode(node) {
+    return node.nodeType === NodeType.ELEMENT_NODE;
+  }
+  function isDocumentFragmentNode(node) {
+    return node.nodeType === NodeType.DOCUMENT_FRAGMENT_NODE;
+  }
+  function isParentNode(node) {
+    return "appendChild" in node;
+  }
+  function cloneNode(node, deep, document2 = node.ownerDocument) {
+    if (isTextNode(node)) {
+      return document2.createTextNode(node.data);
+    } else if (isCommentNode(node)) {
+      return document2.createComment(node.data);
+    } else if (isElementNode(node)) {
+      const cloned = document2.createElement(node.localName);
+      if (node[ATTRIBUTES]) {
+        for (let i = 0; i < node[ATTRIBUTES].length; i++) {
+          const attribute = node[ATTRIBUTES].item(i);
+          cloned.setAttributeNS(attribute.namespaceURI, attribute.name, attribute.value);
+        }
+      }
+      if (deep) {
+        for (const child of node.childNodes) {
+          cloned.appendChild(cloneNode(child, true, document2));
+        }
+      }
+      return cloned;
+    } else if (isDocumentFragmentNode(node)) {
+      const fragment = document2.createDocumentFragment();
+      if (deep) {
+        for (const child of node.childNodes) {
+          fragment.appendChild(cloneNode(child, true, document2));
+        }
+      }
+      return fragment;
+    } else {
+      const cloned = new node.constructor();
+      cloned[OWNER_DOCUMENT] = document2;
+      return cloned;
+    }
+  }
+  function descendants(node) {
+    const nodes = [];
+    const walk = (node2) => {
+      nodes.push(node2);
+      const child2 = node2[CHILD];
+      if (child2) walk(child2);
+      const sibling = node2[NEXT];
+      if (sibling) walk(sibling);
+    };
+    const child = node[CHILD];
+    if (child) walk(child);
+    return nodes;
+  }
+  function selfAndDescendants(node) {
+    const nodes = descendants(node);
+    nodes.unshift(node);
+    return nodes;
+  }
+
+  // node_modules/@remote-dom/polyfill/build/esm/Node.mjs
+  var _a3, _b3, _c2, _d, _e, _f;
+  var Node = class extends EventTarget {
+    constructor() {
+      super(...arguments);
+      __publicField(this, "nodeType", (() => NodeType.NODE)());
+      __publicField(this, _f, "");
+      __publicField(this, _e, null);
+      __publicField(this, _d, null);
+      __publicField(this, _c2, null);
+      __publicField(this, _b3, null);
+      __publicField(this, _a3, false);
+    }
+    get [(_f = NAME, _e = PARENT, _d = CHILD, _c2 = PREV, _b3 = NEXT, _a3 = IS_CONNECTED, HOOKS)]() {
+      return this[OWNER_DOCUMENT].defaultView[HOOKS];
+    }
+    get localName() {
+      return this[NAME];
+    }
+    get nodeName() {
+      return this[NAME].toUpperCase();
+    }
+    get ownerDocument() {
+      return this[OWNER_DOCUMENT];
+    }
+    get isConnected() {
+      return this[IS_CONNECTED];
+    }
+    isDefaultNamespace(namespace) {
+      return namespace === NamespaceURI.XHTML;
+    }
+    get parentNode() {
+      return this[PARENT];
+    }
+    set parentNode(_readonly) {
+    }
+    get parentElement() {
+      const parent = this[PARENT];
+      if (!parent || parent.nodeType !== 1) return null;
+      return parent;
+    }
+    set parentElement(_readonly) {
+    }
+    get previousSibling() {
+      return this[PREV];
+    }
+    set previousSibling(_readonly) {
+    }
+    get nextSibling() {
+      return this[NEXT];
+    }
+    set nextSibling(_readonly) {
+    }
+    get previousElementSibling() {
+      let sib = this[PREV];
+      while (sib && sib.nodeType !== 1) sib = sib[PREV];
+      return sib;
+    }
+    set previousElementSibling(_readonly) {
+    }
+    get nextElementSibling() {
+      let sib = this[NEXT];
+      while (sib && sib.nodeType !== 1) sib = sib[NEXT];
+      return sib;
+    }
+    set nextElementSibling(_readonly) {
+    }
+    get firstChild() {
+      return this[CHILD];
+    }
+    set firstChild(_readonly) {
+    }
+    get lastChild() {
+      let child = this[CHILD];
+      while (child) {
+        const next = child[NEXT];
+        if (next == null) break;
+        child = next;
+      }
+      return child;
+    }
+    set lastChild(_readonly) {
+    }
+    get nodeValue() {
+      if (isCharacterData(this)) return this.data;
+      return null;
+    }
+    set nodeValue(data) {
+      if (isCharacterData(this)) this.data = data;
+    }
+    get textContent() {
+      if (isCharacterData(this)) return this.data;
+      let text = "";
+      for (const node of descendants(this)) {
+        if (isTextNode(node)) {
+          text += node.data;
+        }
+      }
+      return text;
+    }
+    set textContent(data) {
+      if (isCharacterData(this)) {
+        this.data = data;
+      } else if (isParentNode(this)) {
+        let child;
+        while (child = this[CHILD]) {
+          this.removeChild(child);
+        }
+        this.append(data);
+      }
+    }
+    cloneNode(deep) {
+      return cloneNode(this, deep);
+    }
+    contains(node) {
+      let currentNode = node;
+      while (true) {
+        if (currentNode == null) return false;
+        if (currentNode === this) return true;
+        currentNode = node.parentNode;
+      }
+    }
+  };
+
+  // node_modules/@remote-dom/polyfill/build/esm/ChildNode.mjs
+  var ChildNode = class extends Node {
+    remove() {
+      const parent = this.parentNode;
+      if (!parent) return;
+      parent.removeChild(this);
+    }
+    replaceWith(...nodes) {
+      const parent = this.parentNode;
+      if (!parent) return;
+      const node = toNode(parent, nodes[0]);
+      const next = node[NEXT];
+      parent.replaceChild(this, node);
+      for (let i = 1; i < nodes.length; i++) {
+        parent.insertBefore(toNode(parent, nodes[i]), next);
+      }
+    }
+    before(...nodes) {
+      const parent = this.parentNode;
+      if (!parent) return;
+      for (const node of nodes) {
+        parent.insertBefore(toNode(parent, node), this);
+      }
+    }
+    after(...nodes) {
+      const parent = this.parentNode;
+      if (!parent) return;
+      const next = this[NEXT];
+      for (const node of nodes) {
+        parent.insertBefore(toNode(parent, node), next);
+      }
+    }
+  };
+  function toNode(parent, node) {
+    if (node instanceof Node) return node;
+    const ownerDocument = parent.ownerDocument;
+    return ownerDocument.createTextNode(String(node));
+  }
+
+  // node_modules/@remote-dom/polyfill/build/esm/NodeList.mjs
+  var NodeList = class extends Array {
+    item(index) {
+      return this[index];
+    }
+  };
+
+  // node_modules/@remote-dom/polyfill/build/esm/selectors.mjs
+  var Combinator = /* @__PURE__ */ function(Combinator2) {
+    Combinator2[Combinator2["Descendant"] = 0] = "Descendant";
+    Combinator2[Combinator2["Child"] = 1] = "Child";
+    Combinator2[Combinator2["Sibling"] = 2] = "Sibling";
+    Combinator2[Combinator2["Adjacent"] = 3] = "Adjacent";
+    Combinator2[Combinator2["Inner"] = 4] = "Inner";
+    return Combinator2;
+  }(Combinator || {});
+  var MatcherType = /* @__PURE__ */ function(MatcherType2) {
+    MatcherType2[MatcherType2["Unknown"] = 0] = "Unknown";
+    MatcherType2[MatcherType2["Element"] = 1] = "Element";
+    MatcherType2[MatcherType2["Id"] = 2] = "Id";
+    MatcherType2[MatcherType2["Class"] = 3] = "Class";
+    MatcherType2[MatcherType2["Attribute"] = 4] = "Attribute";
+    MatcherType2[MatcherType2["Pseudo"] = 5] = "Pseudo";
+    MatcherType2[MatcherType2["Function"] = 6] = "Function";
+    return MatcherType2;
+  }(MatcherType || {});
+  var ELEMENT_SELECTOR_TEST = /[a-z]/;
+  function querySelector(within, selector) {
+    const parts = parseSelector(selector);
+    let result = null;
+    const child = within[CHILD];
+    if (child && parts[0].matchers.length) {
+      walkNodesForSelector(child, parts, (node) => {
+        result = node;
+        return false;
+      });
+    }
+    return result;
+  }
+  function querySelectorAll(within, selector) {
+    const parts = parseSelector(selector);
+    const results = [];
+    const child = within[CHILD];
+    if (child && parts[0].matchers.length) {
+      walkNodesForSelector(child, parts, (node) => {
+        results.push(node);
+      });
+    }
+    return results;
+  }
+  function parseSelector(selector) {
+    var _a16, _b13;
+    let part = {
+      combinator: Combinator.Inner,
+      matchers: []
+    };
+    const parts = [part];
+    const tokenizer = /\s*?([>\s+~]?)\s*?(?:(?:\[\s*([^\]=]+)(?:=(['"])(.*?)\3)?\s*\])|([#.]?)([^\s#.[>:]+)|:(\w+)(?:\((.*?)\))?)/gi;
+    let token;
+    while (token = tokenizer.exec(selector)) {
+      if (token[1]) {
+        if (token[1] === ">") part.combinator = Combinator.Child;
+        else if (token[1] === "+") part.combinator = Combinator.Adjacent;
+        else if (token[1] === "~") part.combinator = Combinator.Sibling;
+        else part.combinator = Combinator.Descendant;
+        part = {
+          combinator: Combinator.Inner,
+          matchers: []
+        };
+        parts.push(part);
+      }
+      let type = MatcherType.Unknown;
+      if (token[2]) {
+        type = MatcherType.Attribute;
+      } else if (token[5]) {
+        type = token[5] === "#" ? MatcherType.Id : MatcherType.Class;
+      } else if (token[7]) {
+        type = token[8] == null ? MatcherType.Pseudo : MatcherType.Function;
+      } else if (token[6] && ELEMENT_SELECTOR_TEST.test(token[6])) {
+        type = MatcherType.Element;
+      }
+      part.matchers.push({
+        type,
+        name: token[2] || token[6] || token[7],
+        value: (_b13 = (_a16 = token[4]) != null ? _a16 : token[6]) != null ? _b13 : token[8]
+      });
+    }
+    return parts;
+  }
+  function matchesSelector(element, selector) {
+    const parsed = parseSelector(selector);
+    let part;
+    while (part = parsed.pop()) {
+      if (!matchesSelectorPart(element, part)) return false;
+    }
+    return true;
+  }
+  function walkNodesForSelector(node, parts, callback) {
+    if (isElementNode(node)) {
+      if (matchesSelectorRecursive(node, parts)) {
+        if (callback(node) === false) return false;
+      }
+      const child = node[CHILD];
+      if (child && walkNodesForSelector(child, parts, callback) === false) {
+        return false;
+      }
+    }
+    const next = node[NEXT];
+    if (next && walkNodesForSelector(next, parts, callback) === false) {
+      return false;
+    }
+    return true;
+  }
+  function matchesSelectorRecursive(element, parts) {
+    const {
+      combinator,
+      matchers
+    } = parts[parts.length - 1];
+    if (combinator === Combinator.Inner) {
+      if (!matchesSelectorMatcher(element, matchers)) return false;
+      const pp = parts.slice(0, -1);
+      return pp.length === 0 || matchesSelectorRecursive(element, pp);
+    }
+    const link = combinator === Combinator.Child || combinator === Combinator.Descendant ? PARENT : PREV;
+    let ref = element[link];
+    if (!ref || !matchesSelectorMatcher(ref, matchers)) {
+      return false;
+    }
+    if (combinator === Combinator.Descendant || combinator === Combinator.Sibling) {
+      while (ref = ref[link]) {
+        if (matchesSelectorMatcher(ref, matchers)) {
+          const pp = parts.slice(0, -1);
+          if (pp.length === 0) return true;
+          if (matchesSelectorRecursive(element, pp)) return true;
+        }
+      }
+    }
+    return false;
+  }
+  function matchesSelectorPart(element, {
+    combinator,
+    matchers
+  }) {
+    if (combinator === Combinator.Inner) {
+      return matchesSelectorMatcher(element, matchers);
+    }
+    const link = combinator === Combinator.Child || combinator === Combinator.Descendant ? PARENT : PREV;
+    let ref = element[link];
+    if (!ref || !matchesSelectorMatcher(ref, matchers)) {
+      return false;
+    }
+    if (combinator === Combinator.Descendant || combinator === Combinator.Sibling) {
+      while (ref = ref[link]) {
+        if (matchesSelectorMatcher(ref, matchers)) return true;
+      }
+    }
+    return false;
+  }
+  function matchesSelectorMatcher(element, matcher) {
+    if (!element) return false;
+    if (Array.isArray(matcher)) {
+      for (const single of matcher) {
+        if (matchesSelectorMatcher(element, single) === false) return false;
+      }
+      return true;
+    }
+    const {
+      type,
+      name,
+      value
+    } = matcher;
+    switch (type) {
+      case MatcherType.Element:
+        return element.localName === name;
+      case MatcherType.Id:
+        return element.getAttribute("id") === name;
+      case MatcherType.Class:
+        return element.getAttribute("class") === name;
+      case MatcherType.Attribute:
+        return value == null ? element.hasAttribute(name) : element.getAttribute(name) === value;
+      case MatcherType.Pseudo:
+        switch (name) {
+          default:
+            throw Error(`Pseudo :${name} not implemented`);
+        }
+      case MatcherType.Function:
+        switch (name) {
+          case "has":
+            return matchesSelector(element, value || "");
+          default:
+            throw Error(`Function :${name}(${value}) not implemented`);
+        }
+    }
+    return false;
+  }
+
+  // node_modules/@remote-dom/polyfill/build/esm/ParentNode.mjs
+  var ParentNode = class extends ChildNode {
+    constructor() {
+      super(...arguments);
+      __publicField(this, "childNodes", (() => new NodeList())());
+      __publicField(this, "children", (() => new NodeList())());
+    }
+    appendChild(child) {
+      this.insertInto(child, null);
+    }
+    insertBefore(child, ref) {
+      this.insertInto(child, ref || null);
+    }
+    append(...nodes) {
+      for (const child of nodes) {
+        if (child == null) continue;
+        this.appendChild(toNode(this, child));
+      }
+    }
+    prepend(...nodes) {
+      const before = this.firstChild;
+      for (const child of nodes) {
+        if (child == null) continue;
+        this.insertBefore(toNode(this, child), before);
+      }
+    }
+    replaceChildren(...nodes) {
+      let child;
+      while (child = this.firstChild) {
+        this.removeChild(child);
+      }
+      this.append(...nodes);
+    }
+    removeChild(child) {
+      var _a16, _b13, _c6;
+      if (child.parentNode !== this) throw Error(`not a child of this node`);
+      const prev = child[PREV];
+      const next = child[NEXT];
+      if (prev) prev[NEXT] = next;
+      else this[CHILD] = next;
+      if (next) next[PREV] = prev;
+      const childNodes = this.childNodes;
+      const childNodesIndex = childNodes.indexOf(child);
+      childNodes.splice(childNodesIndex, 1);
+      if (child.nodeType === 1) {
+        const children = this.children;
+        children.splice(children.indexOf(child), 1);
+      }
+      child[PARENT] = null;
+      child[NEXT] = null;
+      child[PREV] = null;
+      if (this[IS_CONNECTED]) {
+        for (const node of selfAndDescendants(child)) {
+          node[IS_CONNECTED] = false;
+          (_a16 = node.disconnectedCallback) == null ? void 0 : _a16.call(node);
+        }
+      }
+      if (this.nodeType === NodeType.ELEMENT_NODE) {
+        (_c6 = (_b13 = this[HOOKS]).removeChild) == null ? void 0 : _c6.call(_b13, this, child, childNodesIndex);
+      }
+    }
+    replaceChild(newChild, oldChild) {
+      if (oldChild.parentNode !== this) {
+        throw Error("reference node is not a child of this parent");
+      }
+      const next = oldChild[NEXT];
+      this.removeChild(oldChild);
+      this.insertInto(newChild, next);
+    }
+    querySelectorAll(selector) {
+      return querySelectorAll(this, selector);
+    }
+    querySelector(selector) {
+      return querySelector(this, selector);
+    }
+    insertInto(child, before) {
+      var _a16, _b13, _c6;
+      if (child.nodeType === NodeType.DOCUMENT_FRAGMENT_NODE) {
+        let node = child[CHILD];
+        while (node) {
+          const next = node[NEXT];
+          this.insertInto(node, before);
+          node = next;
+        }
+        return;
+      }
+      if (child.parentNode !== null) {
+        child.parentNode.removeChild(child);
+      }
+      if (before) {
+        if (before.parentNode !== this) {
+          throw Error("reference node is not a child of this parent");
+        }
+        child[NEXT] = before;
+        child[PREV] = before[PREV];
+        if (before[PREV] === null) this[CHILD] = child;
+        before[PREV] = child;
+      } else {
+        child[NEXT] = null;
+        let last = this[CHILD];
+        if (last) {
+          let next;
+          while (next = last[NEXT]) last = next;
+          last[NEXT] = child;
+          child[PREV] = last;
+        } else {
+          this[CHILD] = child;
+          child[PREV] = null;
+        }
+      }
+      const ownerDocument = this[OWNER_DOCUMENT];
+      const isElement = child.nodeType === NodeType.ELEMENT_NODE;
+      child[PARENT] = this;
+      child[OWNER_DOCUMENT] = ownerDocument;
+      const childNodes = this.childNodes;
+      let insertIndex;
+      if (before) {
+        insertIndex = childNodes.indexOf(before);
+        childNodes.splice(insertIndex, 0, child);
+        if (isElement) {
+          const children = this.children;
+          let ref = before;
+          while (ref && ref.nodeType !== 1) ref = ref[NEXT];
+          if (ref) {
+            children.splice(children.indexOf(ref), 0, child);
+          } else {
+            children.push(child);
+          }
+        }
+      } else {
+        insertIndex = childNodes.length;
+        childNodes.push(child);
+        if (isElement) this.children.push(child);
+      }
+      if (this[IS_CONNECTED]) {
+        for (const node of selfAndDescendants(child)) {
+          node[IS_CONNECTED] = true;
+          (_a16 = node.connectedCallback) == null ? void 0 : _a16.call(node);
+        }
+      }
+      if (this.nodeType === NodeType.ELEMENT_NODE) {
+        (_c6 = (_b13 = this[HOOKS]).insertChild) == null ? void 0 : _c6.call(_b13, this, child, insertIndex);
+      }
+    }
+  };
+
+  // node_modules/@remote-dom/polyfill/build/esm/NamedNodeMap.mjs
+  var _a4;
+  var NamedNodeMap = class {
+    constructor(ownerElement) {
+      __publicField(this, _a4, null);
+      this[OWNER_ELEMENT] = ownerElement;
+    }
+    getNamedItem(name) {
+      return this.getNamedItemNS(null, name);
+    }
+    getNamedItemNS(namespaceURI, name) {
+      let attr = this[CHILD];
+      while (attr) {
+        if (attr.name === name && attr[NS] == namespaceURI) {
+          return attr;
+        }
+        attr = attr[NEXT];
+      }
+      return null;
+    }
+    item(index) {
+      let attr = this[CHILD];
+      let i = 0;
+      while (attr) {
+        if (i++ === index) return attr;
+        attr = attr[NEXT];
+      }
+      return null;
+    }
+    get length() {
+      let index = 0;
+      let attr = this[CHILD];
+      while (attr) {
+        index++;
+        attr = attr[NEXT];
+      }
+      return index;
+    }
+    removeNamedItem(name) {
+      return this.removeNamedItemNS(null, name);
+    }
+    removeNamedItemNS(namespaceURI, name) {
+      var _a16, _b13;
+      const ownerElement = this[OWNER_ELEMENT];
+      let attr = this[CHILD];
+      let prev = null;
+      while (attr != null) {
+        if (attr.name === name && attr[NS] == namespaceURI) {
+          if (prev) prev[NEXT] = attr[NEXT];
+          if (this[CHILD] === attr) this[CHILD] = attr[NEXT];
+          updateElementAttribute(ownerElement, attr.name, attr.value, null);
+          (_b13 = (_a16 = ownerElement[HOOKS]).removeAttribute) == null ? void 0 : _b13.call(_a16, ownerElement, name, namespaceURI);
+          return attr;
+        }
+        prev = attr;
+        attr = attr[NEXT];
+      }
+      return null;
+    }
+    setNamedItem(attr) {
+      var _a16, _b13, _c6;
+      const ownerElement = this[OWNER_ELEMENT];
+      let old = null;
+      let child = this[CHILD];
+      attr[OWNER_ELEMENT] = ownerElement;
+      if (child == null) {
+        this[CHILD] = attr;
+      } else {
+        let prev;
+        while (child) {
+          if (child.name === attr.name && child[NS] == attr[NS]) {
+            if (prev) prev[NEXT] = attr;
+            else this[CHILD] = attr;
+            attr[NEXT] = child[NEXT];
+            child[NEXT] = null;
+            old = child;
+            break;
+          }
+          prev = child;
+          child = child[NEXT];
+        }
+        if (prev) prev[NEXT] = attr;
+        else this[CHILD] = attr;
+      }
+      if (!old || old.value !== attr.value) {
+        updateElementAttribute(ownerElement, attr.name, (_a16 = old == null ? void 0 : old.value) != null ? _a16 : null, attr.value);
+        (_c6 = (_b13 = ownerElement[HOOKS]).setAttribute) == null ? void 0 : _c6.call(_b13, ownerElement, attr.name, attr.value, attr[NS]);
+      }
+      return old;
+    }
+    setNamedItemNS(attr) {
+      return this.setNamedItem(attr);
+    }
+    *[(_a4 = CHILD, Symbol.iterator)]() {
+      let attr = this[CHILD];
+      while (attr) {
+        yield attr;
+        attr = attr[NEXT];
+      }
+    }
+  };
+  function updateElementAttribute(element, name, oldValue, newValue) {
+    const {
+      observedAttributes
+    } = element.constructor;
+    const {
+      attributeChangedCallback
+    } = element;
+    if (name === "slot") {
+      element.slot = newValue != null ? newValue : "";
+    }
+    if (attributeChangedCallback == null || observedAttributes == null || !observedAttributes.includes(name)) {
+      return;
+    }
+    return attributeChangedCallback.call(element, name, oldValue, newValue);
+  }
+
+  // node_modules/@remote-dom/polyfill/build/esm/Attr.mjs
+  var _a5, _b4, _c3, _d2;
+  var Attr = class extends (_d2 = Node, _c3 = NS, _b4 = NEXT, _a5 = OWNER_ELEMENT, _d2) {
+    constructor(name, value, namespace) {
+      super();
+      __publicField(this, "nodeType", (() => NodeType.ATTRIBUTE_NODE)());
+      __publicField(this, _c3, null);
+      __publicField(this, _b4, null);
+      __publicField(this, _a5, null);
+      this[NAME] = name;
+      this[VALUE] = value;
+      if (namespace) this[NS] = namespace;
+    }
+    get nodeName() {
+      return this[NAME];
+    }
+    set nodeName(_readonly) {
+    }
+    get name() {
+      return this[NAME];
+    }
+    set name(_readonly) {
+    }
+    get value() {
+      return this[VALUE];
+    }
+    set value(value) {
+      var _a16, _b13;
+      const str = String(value);
+      this[VALUE] = str;
+      const ownerElement = this[OWNER_ELEMENT];
+      if (!ownerElement) return;
+      (_b13 = (_a16 = this[HOOKS]).setAttribute) == null ? void 0 : _b13.call(_a16, ownerElement, this[NAME], str, this[NS]);
+    }
+    get nodeValue() {
+      return this.value;
+    }
+    set nodeValue(value) {
+      this.value = value;
+    }
+    get ownerElement() {
+      return this[OWNER_ELEMENT];
+    }
+    get namespaceURI() {
+      return this[NS];
+    }
+    get specified() {
+      return true;
+    }
+  };
+
+  // node_modules/@remote-dom/polyfill/build/esm/serialization.mjs
+  var elementTokenizer = /(?:<([a-z][a-z0-9-:]*)((?:\s[^<>'"=\n\s]+(?:=(['"])[^\n]*?\3|=[^>'"\n\s]*|))*)\s*(\/?)\s*>|<\/([a-z][a-z0-9-:]*)>|<!--(.*?)-->|([^&<>]+))/gi;
+  var attributeTokenizer = /\s([^<>'"=\n\s]+)(?:=(['"])([^\n]*?)\2|=([^>'"\n\s]*)|)/g;
+  function parseHtml(html, contextNode) {
+    const document2 = contextNode.ownerDocument;
+    const root = document2.createDocumentFragment();
+    const stack = [root];
+    let parent = root;
+    let token;
+    elementTokenizer.lastIndex = 0;
+    while (token = elementTokenizer.exec(html)) {
+      const tag = token[1];
+      if (tag) {
+        const node = document2.createElement(tag);
+        const attrs = token[2];
+        attributeTokenizer.lastIndex = 0;
+        let t;
+        while (t = attributeTokenizer.exec(attrs)) {
+          node.setAttribute(t[1], t[3] || t[4] || "");
+        }
+        parent.append(node);
+        stack.push(parent);
+        parent = node;
+      } else if (token[5]) {
+        parent = stack.pop() || root;
+      } else if (token[6]) {
+        parent.append(document2.createComment(token[6]));
+      } else {
+        parent.append(token[7]);
+      }
+    }
+    return root;
+  }
+  function serializeChildren(parentNode) {
+    let out = "";
+    let child = parentNode[CHILD];
+    while (child) {
+      out += serializeNode(child);
+      child = child[NEXT];
+    }
+    return out;
+  }
+  function serializeNode(node) {
+    var _a16;
+    switch (node.nodeType) {
+      case NodeType.ELEMENT_NODE: {
+        const el = node;
+        let out = `<${el[NAME]}`;
+        let attr = (_a16 = el[ATTRIBUTES]) == null ? void 0 : _a16[CHILD];
+        while (attr) {
+          out += ` ${attr[NAME]}`;
+          let value = attr[VALUE];
+          if (value !== "") {
+            value = String(value).replace(/&/g, "&amp;").replace(/"/g, "&quot;");
+            out += `="${value}"`;
+          }
+          attr = attr[NEXT];
+        }
+        out += ">";
+        out += serializeChildren(el);
+        out += `</${el[NAME]}>`;
+        return out;
+      }
+      case NodeType.TEXT_NODE: {
+        const text = node;
+        return text[DATA].replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+      }
+      case NodeType.COMMENT_NODE: {
+        const text = node;
+        return `<!--${text[DATA]}-->`;
+      }
+    }
+    return "";
+  }
+
+  // node_modules/@remote-dom/polyfill/build/esm/Element.mjs
+  var _a6, _b5;
+  var Element2 = class extends (_b5 = ParentNode, _a6 = NS, _b5) {
+    constructor() {
+      super(...arguments);
+      __publicField(this, "nodeType", (() => NodeType.ELEMENT_NODE)());
+      __publicField(this, _a6, (() => NamespaceURI.XHTML)());
+    }
+    get namespaceURI() {
+      return this[NS];
+    }
+    get tagName() {
+      return this.nodeName;
+    }
+    get slot() {
+      var _a16;
+      return (_a16 = this.getAttribute("slot")) != null ? _a16 : "";
+    }
+    set slot(slot) {
+      const finalSlot = String(slot);
+      if (this.getAttribute("slot") !== finalSlot) {
+        this.attributes.setNamedItem(new Attr("slot", finalSlot));
+      }
+    }
+    get attributes() {
+      let attributes = this[ATTRIBUTES];
+      if (!attributes) {
+        attributes = new NamedNodeMap(this);
+        this[ATTRIBUTES] = attributes;
+      }
+      return attributes;
+    }
+    getAttributeNames() {
+      return [...this.attributes].map((attr) => attr.name);
+    }
+    get firstElementChild() {
+      var _a16;
+      return (_a16 = this.children[0]) != null ? _a16 : null;
+    }
+    get lastElementChild() {
+      var _a16;
+      return (_a16 = this.children[this.children.length - 1]) != null ? _a16 : null;
+    }
+    get nextElementSibling() {
+      let sib = this.nextSibling;
+      while (sib && sib.nodeType !== 1) sib = sib.nextSibling;
+      return sib;
+    }
+    get previewElementSibling() {
+      let sib = this.previousSibling;
+      while (sib && sib.nodeType !== 1) sib = sib.previousSibling;
+      return sib;
+    }
+    setAttribute(name, value) {
+      this.attributes.setNamedItem(new Attr(name, String(value)));
+    }
+    setAttributeNS(namespace, name, value) {
+      this.attributes.setNamedItemNS(new Attr(name, String(value), namespace));
+    }
+    getAttribute(name) {
+      const attr = this.attributes.getNamedItem(name);
+      return attr && attr.value;
+    }
+    getAttributeNS(namespace, name) {
+      const attr = this.attributes.getNamedItemNS(namespace, name);
+      return attr && attr.value;
+    }
+    hasAttribute(name) {
+      const attr = this.attributes.getNamedItem(name);
+      return attr != null;
+    }
+    hasAttributeNS(namespace, name) {
+      const attr = this.attributes.getNamedItemNS(namespace, name);
+      return attr != null;
+    }
+    removeAttribute(name) {
+      this.attributes.removeNamedItem(name);
+    }
+    removeAttributeNS(namespace, name) {
+      this.attributes.removeNamedItemNS(namespace, name);
+    }
+    get outerHTML() {
+      return serializeNode(this);
+    }
+    get innerHTML() {
+      return serializeChildren(this);
+    }
+    set innerHTML(html) {
+      if (html == null || html === "") {
+        this.replaceChildren();
+      } else {
+        const fragment = parseHtml(String(html), this);
+        this.replaceChildren(fragment);
+      }
+    }
+  };
+
+  // node_modules/@remote-dom/polyfill/build/esm/SVGElement.mjs
+  var _a7, _b6;
+  var SVGElement = class _SVGElement extends (_b6 = Element2, _a7 = NS, _b6) {
+    constructor() {
+      super(...arguments);
+      __publicField(this, _a7, (() => NamespaceURI.SVG)());
+    }
+    get ownerSVGElement() {
+      let root = null;
+      let parent = this.parentNode;
+      while (parent instanceof _SVGElement) {
+        root = parent;
+        parent = parent.parentNode;
+      }
+      return root;
+    }
+  };
+
+  // node_modules/@remote-dom/polyfill/build/esm/CharacterData.mjs
+  var _a8, _b7;
+  var CharacterData = class extends (_b7 = ChildNode, _a8 = DATA, _b7) {
+    constructor(data) {
+      super();
+      __publicField(this, _a8, "");
+      this[DATA] = data == null ? "" : String(data);
+    }
+    setData(data) {
+      var _a16, _b13;
+      let str = "";
+      if (data != null) {
+        str = typeof data === "string" ? data : String(data);
+      }
+      this[DATA] = str;
+      (_b13 = (_a16 = this[HOOKS]).setText) == null ? void 0 : _b13.call(_a16, this, str);
+    }
+    get data() {
+      return this[DATA];
+    }
+    set data(data) {
+      this.setData(data);
+    }
+  };
+
+  // node_modules/@remote-dom/polyfill/build/esm/Text.mjs
+  var _a9, _b8;
+  var Text = class extends (_b8 = CharacterData, _a9 = NAME, _b8) {
+    constructor() {
+      super(...arguments);
+      __publicField(this, "nodeType", (() => NodeType.TEXT_NODE)());
+      __publicField(this, _a9, "#text");
+    }
+  };
+
+  // node_modules/@remote-dom/polyfill/build/esm/Comment.mjs
+  var _a10, _b9;
+  var Comment = class extends (_b9 = CharacterData, _a10 = NAME, _b9) {
+    constructor() {
+      super(...arguments);
+      __publicField(this, "nodeType", 8);
+      __publicField(this, _a10, "#comment");
+    }
+  };
+
+  // node_modules/@remote-dom/polyfill/build/esm/DocumentFragment.mjs
+  var _a11, _b10, _c4;
+  var DocumentFragment = class extends (_c4 = ParentNode, _b10 = NAME, _a11 = OWNER_DOCUMENT, _c4) {
+    constructor() {
+      super(...arguments);
+      __publicField(this, "nodeType", (() => NodeType.DOCUMENT_FRAGMENT_NODE)());
+      __publicField(this, _b10, "#document-fragment");
+      __publicField(this, _a11, (() => window.document)());
+    }
+  };
+
+  // node_modules/@remote-dom/polyfill/build/esm/HTMLTemplateElement.mjs
+  var HTMLTemplateElement = class extends Element2 {
+    get content() {
+      let content = this[CONTENT];
+      if (!content) {
+        content = this.ownerDocument.createDocumentFragment();
+        this[CONTENT] = content;
+      }
+      return content;
+    }
+    set content(_) {
+    }
+    set innerHTML(html) {
+      this.content.replaceChildren(parseHtml(String(html), this));
+    }
+    get innerHTML() {
+      const content = this[CONTENT];
+      return content ? serializeChildren(content) : "";
+    }
+  };
+
+  // node_modules/@remote-dom/polyfill/build/esm/HTMLBodyElement.mjs
+  var HTMLBodyElement = class extends Element2 {
+  };
+
+  // node_modules/@remote-dom/polyfill/build/esm/HTMLHeadElement.mjs
+  var HTMLHeadElement = class extends Element2 {
+  };
+
+  // node_modules/@remote-dom/polyfill/build/esm/HTMLHtmlElement.mjs
+  var HTMLHtmlElement = class extends Element2 {
+  };
+
+  // node_modules/@remote-dom/polyfill/build/esm/Document.mjs
+  var _a12, _b11, _c5;
+  var Document = class extends (_c5 = ParentNode, _b11 = NAME, _a12 = IS_CONNECTED, _c5) {
+    constructor(defaultView) {
+      super();
+      __publicField(this, "nodeType", (() => NodeType.DOCUMENT_NODE)());
+      __publicField(this, _b11, "#document");
+      __publicField(this, _a12, true);
+      this.defaultView = defaultView;
+      this[OWNER_DOCUMENT] = this;
+      this.documentElement = setupElement(new HTMLHtmlElement(), this, "html");
+      this.body = setupElement(new HTMLBodyElement(), this, "body");
+      this.head = setupElement(new HTMLHeadElement(), this, "head");
+      this.appendChild(this.documentElement);
+      this.documentElement.appendChild(this.head);
+      this.documentElement.appendChild(this.body);
+    }
+    createElement(localName) {
+      return createElement(this, localName);
+    }
+    createElementNS(namespaceURI, localName) {
+      return createElement(this, localName, namespaceURI);
+    }
+    createTextNode(data) {
+      var _a16, _b13;
+      const text = createNode(new Text(data), this);
+      (_b13 = (_a16 = this[HOOKS]).createText) == null ? void 0 : _b13.call(_a16, text, String(data));
+      return text;
+    }
+    createComment(data) {
+      return createNode(new Comment(data), this);
+    }
+    createDocumentFragment() {
+      return createNode(new DocumentFragment(), this);
+    }
+    createEvent() {
+      return new Event("");
+    }
+    importNode(node, deep) {
+      return cloneNode(node, deep, this);
+    }
+    adoptNode(node) {
+      var _a16;
+      if (node[OWNER_DOCUMENT] === this) return node;
+      (_a16 = node.parentNode) == null ? void 0 : _a16.removeChild(node);
+      adoptNode(node, this);
+      return node;
+    }
+  };
+  function createNode(node, ownerDocument) {
+    Object.defineProperty(node, OWNER_DOCUMENT, {
+      value: ownerDocument,
+      writable: true,
+      enumerable: false
     });
-    RemoteComponent.displayName = `RemoteComponent(${tag})`;
-    return RemoteComponent;
+    return node;
   }
-  function toChildren(value) {
-    if (value == null) return [];
-    if (Array.isArray(value)) return [...value];
-    return [value];
+  function createElement(ownerDocument, name, namespace) {
+    let element;
+    const lowerName = String(name).toLowerCase();
+    if (namespace === NamespaceURI.SVG) {
+      element = new SVGElement();
+    } else if (lowerName === "template") {
+      element = new HTMLTemplateElement();
+    } else {
+      const CustomElement = ownerDocument.defaultView.customElements.get(name);
+      element = CustomElement ? new CustomElement() : new Element2();
+    }
+    return setupElement(element, ownerDocument, name, namespace);
+  }
+  function setupElement(element, ownerDocument, name, namespace) {
+    var _a16, _b13;
+    createNode(element, ownerDocument);
+    Object.defineProperty(element, NAME, {
+      value: name
+    });
+    if (namespace) {
+      Object.defineProperty(element, NS, {
+        value: namespace
+      });
+    }
+    (_b13 = (_a16 = ownerDocument[HOOKS]).createElement) == null ? void 0 : _b13.call(_a16, element, namespace);
+    return element;
+  }
+  function adoptNode(node, document2) {
+    node[OWNER_DOCUMENT] = document2;
+    if (isParentNode(node)) {
+      for (const child of node.childNodes) {
+        adoptNode(child, document2);
+      }
+    }
   }
 
-  // src/domain/workforce/pages/overview/remote/remoteUI.tsx
-  var import_react_dom = __toESM(require_react_dom());
+  // node_modules/@remote-dom/polyfill/build/esm/CustomEvent.mjs
+  var CustomEvent2 = class extends Event {
+    /**
+     * Returns any custom data event was created with. Typically used for synthetic events.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CustomEvent/detail)
+     */
+    constructor(type, eventInitDict) {
+      super(type, eventInitDict);
+      this.detail = eventInitDict == null ? void 0 : eventInitDict.detail;
+    }
+    /**
+     * Returns any custom data event was created with. Typically used for synthetic events.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CustomEvent/detail)
+     */
+    initCustomEvent(type, bubbles, cancelable, detail) {
+      super.initEvent(type, bubbles, cancelable);
+      this.detail = detail;
+    }
+  };
 
-  // node_modules/@remote-dom/core/build/esm/elements/RemoteEvent.mjs
-  var RemoteEvent = class extends CustomEvent {
-    /**
-     * The last value received from a `respondWith()` call.
-     */
-    /**
-     * Provides the `response` value to be sent as the return value for
-     * the remote property function that triggered this event.
-     */
-    respondWith(response) {
-      this.response = response;
+  // node_modules/@remote-dom/polyfill/build/esm/HTMLElement.mjs
+  var HTMLElement2 = class extends Element2 {
+  };
+
+  // node_modules/@remote-dom/polyfill/build/esm/CustomElementRegistry.mjs
+  var CustomElementRegistryImplementation = class {
+    constructor() {
+      __publicField(this, "registry", /* @__PURE__ */ (() => /* @__PURE__ */ new Map())());
+      __publicField(this, "listenersByName", /* @__PURE__ */ (() => /* @__PURE__ */ new Map())());
+    }
+    define(name, Constructor, _options) {
+      this.registry.set(name, Constructor);
+      const listeners = this.listenersByName.get(name);
+      if (listeners == null) return;
+      this.listenersByName.delete(name);
+      for (const listener of listeners) {
+        listener(Constructor);
+      }
+    }
+    get(name) {
+      return this.registry.get(name);
+    }
+    getName(Constructor) {
+      for (const [name, value] of this.registry) {
+        if (value === Constructor) return name;
+      }
+      return null;
+    }
+    whenDefined(name) {
+      const Constructor = this.registry.get(name);
+      if (Constructor != null) return Promise.resolve(Constructor);
+      let listeners = this.listenersByName.get(name);
+      if (listeners == null) {
+        listeners = [];
+        this.listenersByName.set(name, listeners);
+      }
+      return new Promise((resolve) => {
+        listeners.push(resolve);
+      });
+    }
+    upgrade(_root) {
+    }
+  };
+
+  // node_modules/@remote-dom/polyfill/build/esm/MutationObserver.mjs
+  var MutationObserver = class {
+    // stub implementation
+  };
+
+  // node_modules/@remote-dom/polyfill/build/esm/Window.mjs
+  var _a13, _b12;
+  var Window = class extends (_b12 = EventTarget, _a13 = HOOKS, _b12) {
+    constructor() {
+      super(...arguments);
+      __publicField(this, _a13, {});
+      __publicField(this, "name", "");
+      __publicField(this, "window", this);
+      __publicField(this, "parent", this);
+      __publicField(this, "self", this);
+      __publicField(this, "top", this);
+      __publicField(this, "document", (() => new Document(this))());
+      __publicField(this, "customElements", (() => new CustomElementRegistryImplementation())());
+      __publicField(this, "location", (() => globalThis.location)());
+      __publicField(this, "navigator", (() => globalThis.navigator)());
+      __publicField(this, "Event", /* @__PURE__ */ (() => Event)());
+      __publicField(this, "EventTarget", /* @__PURE__ */ (() => EventTarget)());
+      __publicField(this, "CustomEvent", /* @__PURE__ */ (() => CustomEvent2)());
+      __publicField(this, "Node", /* @__PURE__ */ (() => Node)());
+      __publicField(this, "ParentNode", /* @__PURE__ */ (() => ParentNode)());
+      __publicField(this, "ChildNode", /* @__PURE__ */ (() => ChildNode)());
+      __publicField(this, "DocumentFragment", /* @__PURE__ */ (() => DocumentFragment)());
+      __publicField(this, "Document", /* @__PURE__ */ (() => Document)());
+      __publicField(this, "CharacterData", /* @__PURE__ */ (() => CharacterData)());
+      __publicField(this, "Comment", /* @__PURE__ */ (() => Comment)());
+      __publicField(this, "Text", /* @__PURE__ */ (() => Text)());
+      __publicField(this, "Element", /* @__PURE__ */ (() => Element2)());
+      __publicField(this, "HTMLElement", /* @__PURE__ */ (() => HTMLElement2)());
+      __publicField(this, "SVGElement", /* @__PURE__ */ (() => SVGElement)());
+      __publicField(this, "HTMLTemplateElement", /* @__PURE__ */ (() => HTMLTemplateElement)());
+      __publicField(this, "MutationObserver", /* @__PURE__ */ (() => MutationObserver)());
+    }
+    static setGlobal(window3) {
+      const properties = Object.getOwnPropertyDescriptors(window3);
+      delete properties.self;
+      Object.defineProperties(globalThis, properties);
+      if (typeof globalThis.self === "undefined") {
+        Object.defineProperty(globalThis, "self", {
+          value: window3,
+          configurable: true,
+          writable: true,
+          enumerable: true
+        });
+      } else {
+        Object.defineProperties(self, properties);
+      }
+    }
+    static setGlobalThis(window3) {
+      for (const property in window3) {
+        if (window3[property] === window3) {
+          window3[property] = globalThis;
+        }
+      }
+      const eventTargetPrototypeProperties = Object.getOwnPropertyDescriptors(EventTarget.prototype);
+      const properties = Object.getOwnPropertyDescriptors(window3);
+      Object.defineProperties(globalThis, eventTargetPrototypeProperties);
+      Object.defineProperties(globalThis, properties);
     }
   };
 
   // node_modules/@remote-dom/core/build/esm/constants.mjs
   var MUTATION_TYPE_INSERT_CHILD = 0;
+  var MUTATION_TYPE_REMOVE_CHILD = 1;
+  var MUTATION_TYPE_UPDATE_TEXT = 2;
   var MUTATION_TYPE_UPDATE_PROPERTY = 3;
   var UPDATE_PROPERTY_TYPE_PROPERTY = 1;
   var UPDATE_PROPERTY_TYPE_ATTRIBUTE = 2;
@@ -22179,6 +23584,16 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       }
     }
   }
+  function disconnectRemoteNode(node) {
+    const existingConnection = REMOTE_CONNECTIONS.get(node);
+    if (existingConnection == null) return;
+    REMOTE_CONNECTIONS.delete(node);
+    if (node.childNodes) {
+      for (let i = 0; i < node.childNodes.length; i++) {
+        disconnectRemoteNode(node.childNodes[i]);
+      }
+    }
+  }
   function serializeRemoteNode(node) {
     const {
       nodeType
@@ -22213,9 +23628,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     }
   }
   function cloneMaybeObject(maybeObject) {
-    return maybeObject ? {
-      ...maybeObject
-    } : void 0;
+    return maybeObject ? __spreadValues({}, maybeObject) : void 0;
   }
   function callRemoteElementMethod(node, method, ...args) {
     const id2 = REMOTE_IDS.get(node);
@@ -22226,6 +23639,188 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     return connection.call(id2, method, ...args);
   }
 
+  // node_modules/@remote-dom/core/build/esm/polyfill.mjs
+  var window2 = new Window();
+  var hooks = window2[HOOKS];
+  Window.setGlobal(window2);
+  hooks.insertChild = (parent, node, index) => {
+    const connection = remoteConnection(parent);
+    if (connection == null) return;
+    connectRemoteNode(node, connection);
+    connection.mutate([[MUTATION_TYPE_INSERT_CHILD, remoteId(parent), serializeRemoteNode(node), index]]);
+  };
+  hooks.removeChild = (parent, node, index) => {
+    const connection = remoteConnection(parent);
+    if (connection == null) return;
+    disconnectRemoteNode(node);
+    connection.mutate([[MUTATION_TYPE_REMOVE_CHILD, remoteId(parent), index]]);
+  };
+  hooks.setText = (text, data) => {
+    const connection = remoteConnection(text);
+    if (connection == null) return;
+    connection.mutate([[MUTATION_TYPE_UPDATE_TEXT, remoteId(text), data]]);
+  };
+  hooks.setAttribute = (element, name, value) => {
+    if (element.tagName.includes("-")) return;
+    updateRemoteElementAttribute(element, name, value);
+  };
+  hooks.removeAttribute = (element, name) => {
+    if (element.tagName.includes("-")) return;
+    updateRemoteElementAttribute(element, name);
+  };
+
+  // node_modules/@remote-dom/react/build/esm/polyfill.mjs
+  var HTMLIFrameElement = class extends HTMLElement {
+  };
+  defineGlobalProperty("HTMLIFrameElement", {
+    value: HTMLIFrameElement,
+    configurable: true
+  });
+  var _a14;
+  defineGlobalProperty("location", {
+    value: (_a14 = globalThis.location) != null ? _a14 : {
+      protocol: "https:"
+    },
+    configurable: true
+  });
+  var _a15;
+  defineGlobalProperty("navigator", {
+    value: (_a15 = globalThis.navigator) != null ? _a15 : {
+      userAgent: ""
+    },
+    configurable: true
+  });
+  var CSSStyleDeclaration = class {
+    getPropertyValue(_key) {
+      return void 0;
+    }
+    removeProperty(_key) {
+    }
+    setProperty(_key, _value) {
+    }
+    get cssText() {
+      return "";
+    }
+    set cssText(_css) {
+    }
+  };
+  var STYLE = Symbol("style");
+  Object.defineProperty(Element.prototype, "style", {
+    configurable: true,
+    get() {
+      let style = this[STYLE];
+      if (!style) {
+        style = new CSSStyleDeclaration();
+        this[STYLE] = style;
+      }
+      return style;
+    },
+    set(cssText) {
+      this.style.cssText = String(cssText);
+    }
+  });
+  function defineGlobalProperty(name, descriptor) {
+    Object.defineProperty(window, name, descriptor);
+    Object.defineProperty(globalThis, name, descriptor);
+  }
+
+  // node_modules/@remote-dom/react/build/esm/component.mjs
+  var import_react = __toESM(require_react(), 1);
+  function createRemoteComponent(tag, Element3 = customElements.get(tag), {
+    slotProps = true,
+    eventProps = {}
+  } = {}) {
+    var _a16;
+    const normalizeSlotProps = Boolean(slotProps);
+    const slotPropWrapperOption = (_a16 = typeof slotProps === "object" ? slotProps.wrapper : void 0) != null ? _a16 : true;
+    const slotPropWrapper = typeof slotPropWrapperOption === "string" ? slotPropWrapperOption : slotPropWrapperOption ? "remote-fragment" : false;
+    const RemoteComponent = /* @__PURE__ */ (0, import_react.forwardRef)(function RemoteComponent2(props, ref) {
+      const internalRef = (0, import_react.useRef)();
+      const lastRemotePropertiesRef = (0, import_react.useRef)();
+      const remoteProperties2 = {};
+      const children = toChildren(props.children);
+      for (const prop in props) {
+        const propValue = props[prop];
+        if (prop === "slot") {
+          remoteProperties2.slot = propValue;
+          continue;
+        }
+        if (normalizeSlotProps && Element3.remoteSlotDefinitions.has(prop) && /* @__PURE__ */ (0, import_react.isValidElement)(propValue)) {
+          if (!slotPropWrapper) {
+            children.push(/* @__PURE__ */ (0, import_react.cloneElement)(propValue, {
+              slot: prop
+            }));
+          } else {
+            children.push(/* @__PURE__ */ (0, import_react.createElement)(slotPropWrapper, {
+              slot: prop
+            }, propValue));
+          }
+          continue;
+        }
+        remoteProperties2[prop] = propValue;
+      }
+      (0, import_react.useLayoutEffect)(() => {
+        var _a17;
+        const element = internalRef.current;
+        if (element == null) return;
+        for (const prop in remoteProperties2) {
+          if (prop === "children") continue;
+          const oldValue = (_a17 = lastRemotePropertiesRef.current) == null ? void 0 : _a17[prop];
+          const newValue = remoteProperties2[prop];
+          if (oldValue === newValue) continue;
+          const eventProp = eventProps[prop];
+          if (eventProp) {
+            const eventName = eventProp.event;
+            if (oldValue) element.removeEventListener(eventName, oldValue);
+            if (newValue) element.addEventListener(eventName, newValue);
+            continue;
+          }
+          if (prop in element) {
+            element[prop] = remoteProperties2[prop];
+            continue;
+          }
+          if (newValue == null) {
+            element.removeAttribute(prop);
+          } else {
+            element.setAttribute(prop, String(newValue));
+          }
+        }
+        lastRemotePropertiesRef.current = remoteProperties2;
+      });
+      return /* @__PURE__ */ (0, import_react.createElement)(tag, {
+        ref: (refValue) => {
+          internalRef.current = refValue;
+          if (typeof ref === "function") ref(refValue);
+          else if (ref != null) ref.current = refValue;
+        }
+      }, ...children);
+    });
+    RemoteComponent.displayName = `RemoteComponent(${tag})`;
+    return RemoteComponent;
+  }
+  function toChildren(value) {
+    if (value == null) return [];
+    if (Array.isArray(value)) return [...value];
+    return [value];
+  }
+
+  // src/domain/workforce/pages/overview/remote/remoteUI.tsx
+  var import_react_dom = __toESM(require_react_dom());
+
+  // node_modules/@remote-dom/core/build/esm/elements/RemoteEvent.mjs
+  var RemoteEvent = class extends CustomEvent {
+    /**
+     * The last value received from a `respondWith()` call.
+     */
+    /**
+     * Provides the `response` value to be sent as the return value for
+     * the remote property function that triggered this event.
+     */
+    respondWith(response) {
+      this.response = response;
+    }
+  };
+
   // node_modules/@remote-dom/core/build/esm/elements/RemoteElement.mjs
   var EMPTY_DEFINITION = Object.freeze({});
   function createRemoteElement({
@@ -22235,17 +23830,12 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     events,
     methods
   } = {}) {
-    const RemoteElementConstructor = class extends RemoteElement {
-      static remoteSlots = /* @__PURE__ */ (() => slots)();
-      static remoteProperties = /* @__PURE__ */ (() => properties)();
-      static remoteAttributes = /* @__PURE__ */ (() => attributes)();
-      static remoteEvents = /* @__PURE__ */ (() => events)();
-      static remoteMethods = /* @__PURE__ */ (() => methods)();
-    };
+    var _a16;
+    const RemoteElementConstructor = (_a16 = class extends RemoteElement {
+    }, __publicField(_a16, "remoteSlots", /* @__PURE__ */ (() => slots)()), __publicField(_a16, "remoteProperties", /* @__PURE__ */ (() => properties)()), __publicField(_a16, "remoteAttributes", /* @__PURE__ */ (() => attributes)()), __publicField(_a16, "remoteEvents", /* @__PURE__ */ (() => events)()), __publicField(_a16, "remoteMethods", /* @__PURE__ */ (() => methods)()), _a16);
     return RemoteElementConstructor;
   }
   var RemoteElement = class extends HTMLElement {
-    static slottable = true;
     static get observedAttributes() {
       return this.finalize().__observedAttributes;
     }
@@ -22273,14 +23863,6 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     static get remoteSlotDefinitions() {
       return this.finalize().__remoteSlotDefinitions;
     }
-    static __finalized = true;
-    static __observedAttributes = [];
-    static __attributeToPropertyMap = /* @__PURE__ */ (() => /* @__PURE__ */ new Map())();
-    static __eventToPropertyMap = /* @__PURE__ */ (() => /* @__PURE__ */ new Map())();
-    static __remotePropertyDefinitions = /* @__PURE__ */ (() => /* @__PURE__ */ new Map())();
-    static __remoteAttributeDefinitions = /* @__PURE__ */ (() => /* @__PURE__ */ new Map())();
-    static __remoteEventDefinitions = /* @__PURE__ */ (() => /* @__PURE__ */ new Map())();
-    static __remoteSlotDefinitions = /* @__PURE__ */ (() => /* @__PURE__ */ new Map())();
     /**
      * Creates a new definition for a property that will be synchronized between
      * this remote element and its host representation.
@@ -22416,6 +23998,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     /** @internal */
     /** @internal */
     constructor() {
+      var _a16;
       super();
       this.constructor.finalize();
       const propertyDescriptors = {};
@@ -22434,7 +24017,8 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
           configurable: true,
           enumerable: property === aliasedName,
           get: () => {
-            return remoteProperties(this)?.[aliasedName];
+            var _a17;
+            return (_a17 = remoteProperties(this)) == null ? void 0 : _a17[aliasedName];
           },
           set: (value) => {
             updateRemoteElementProperty(this, aliasedName, value);
@@ -22443,14 +24027,15 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
         propertyDescriptors[property] = propertyDescriptor;
       }
       for (const [event, definition] of ThisClass.remoteEventDefinitions.entries()) {
-        const propertyFromDefinition = definition.property ?? true;
+        const propertyFromDefinition = (_a16 = definition.property) != null ? _a16 : true;
         if (!propertyFromDefinition) continue;
         const property = propertyFromDefinition === true ? `on${event}` : propertyFromDefinition;
         propertyDescriptors[property] = {
           configurable: true,
           enumerable: true,
           get: () => {
-            return getRemoteEvents(this).properties.get(property) ?? null;
+            var _a17;
+            return (_a17 = getRemoteEvents(this).properties.get(property)) != null ? _a17 : null;
           },
           set: (value) => {
             const remoteEvents = getRemoteEvents(this);
@@ -22521,7 +24106,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
         property,
         definition: listenerDefinition
       });
-      const normalizedListener = typeof options === "object" && options?.once ? (...args) => {
+      const normalizedListener = typeof options === "object" && (options == null ? void 0 : options.once) ? (...args) => {
         const result = typeof listener === "object" ? listener.handleEvent(...args) : listener.call(this, ...args);
         removeRemoteListener.call(this, type, listener, listenerRecord);
         return result;
@@ -22544,7 +24129,8 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       }
     }
     removeEventListener(type, listener, options) {
-      const listenerRecord = REMOTE_EVENTS.get(this)?.listeners.get(listener);
+      var _a16;
+      const listenerRecord = (_a16 = REMOTE_EVENTS.get(this)) == null ? void 0 : _a16.listeners.get(listener);
       const normalizedListener = listenerRecord ? listenerRecord[0] : listener;
       super.removeEventListener(type, normalizedListener, options);
       if (listenerRecord == null) return;
@@ -22574,6 +24160,15 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       return callRemoteElementMethod(this, method, ...args);
     }
   };
+  __publicField(RemoteElement, "slottable", true);
+  __publicField(RemoteElement, "__finalized", true);
+  __publicField(RemoteElement, "__observedAttributes", []);
+  __publicField(RemoteElement, "__attributeToPropertyMap", /* @__PURE__ */ (() => /* @__PURE__ */ new Map())());
+  __publicField(RemoteElement, "__eventToPropertyMap", /* @__PURE__ */ (() => /* @__PURE__ */ new Map())());
+  __publicField(RemoteElement, "__remotePropertyDefinitions", /* @__PURE__ */ (() => /* @__PURE__ */ new Map())());
+  __publicField(RemoteElement, "__remoteAttributeDefinitions", /* @__PURE__ */ (() => /* @__PURE__ */ new Map())());
+  __publicField(RemoteElement, "__remoteEventDefinitions", /* @__PURE__ */ (() => /* @__PURE__ */ new Map())());
+  __publicField(RemoteElement, "__remoteSlotDefinitions", /* @__PURE__ */ (() => /* @__PURE__ */ new Map())());
   var REMOTE_EVENTS = /* @__PURE__ */ new WeakMap();
   function getRemoteEvents(element) {
     let events = REMOTE_EVENTS.get(element);
@@ -22599,9 +24194,10 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
         definition,
         listeners: /* @__PURE__ */ new Set(),
         dispatch: (arg) => {
-          const event = definition?.dispatchEvent?.call(this, arg) ?? new RemoteEvent(type, {
+          var _a16, _b13;
+          const event = (_b13 = (_a16 = definition == null ? void 0 : definition.dispatchEvent) == null ? void 0 : _a16.call(this, arg)) != null ? _b13 : new RemoteEvent(type, {
             detail: arg,
-            bubbles: definition?.bubbles
+            bubbles: definition == null ? void 0 : definition.bubbles
           });
           this.dispatchEvent(event);
           return event.response;
@@ -22612,6 +24208,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     return remoteEvent;
   }
   function removeRemoteListener(type, listener, listenerRecord) {
+    var _a16, _b13;
     const remoteEvents = getRemoteEvents(this);
     const remoteEvent = listenerRecord[1];
     remoteEvent.listeners.delete(listener);
@@ -22619,11 +24216,11 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     if (remoteEvent.listeners.size > 0) return;
     remoteEvents.events.delete(type);
     if (remoteEvent.property) {
-      if (remoteProperties(this)?.[remoteEvent.property] === remoteEvent.dispatch) {
+      if (((_a16 = remoteProperties(this)) == null ? void 0 : _a16[remoteEvent.property]) === remoteEvent.dispatch) {
         updateRemoteElementProperty(this, remoteEvent.property, void 0);
       }
     } else {
-      if (remoteEventListeners(this)?.[type] === remoteEvent.dispatch) {
+      if (((_b13 = remoteEventListeners(this)) == null ? void 0 : _b13[type]) === remoteEvent.dispatch) {
         updateRemoteElementEventListener(this, type, void 0);
       }
     }
@@ -22633,7 +24230,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       return remotePropertyDefinitions.get(name);
     }
     const looksLikeEventCallback = name[0] === "o" && name[1] === "n";
-    const resolvedDescription = description ?? {};
+    const resolvedDescription = description != null ? description : {};
     let {
       alias
     } = resolvedDescription;
@@ -22649,7 +24246,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
         alias = [lowercaseProperty];
       }
       if (looksLikeEventCallback) {
-        alias ??= [];
+        alias != null ? alias : alias = [];
         alias.unshift(`_${name}`);
       }
     }
@@ -22693,6 +24290,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     return definition;
   }
   function convertAttributeValueToProperty(value, type) {
+    var _a16;
     if (value == null) return void 0;
     switch (type) {
       case Boolean:
@@ -22701,7 +24299,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       case Array:
         try {
           return JSON.parse(value);
-        } catch {
+        } catch (e) {
           return void 0;
         }
       case String:
@@ -22711,7 +24309,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       case Function:
         return void 0;
       default: {
-        return type.parse?.(value);
+        return (_a16 = type.parse) == null ? void 0 : _a16.call(type, value);
       }
     }
   }
@@ -22766,20 +24364,21 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     }
   });
   function renderUsingReact(root, api) {
-    import_react_dom.default.render(/* @__PURE__ */ (0, import_jsx_runtime.jsx)(App, { api }), root);
+    (0, import_react_dom.render)(/* @__PURE__ */ (0, import_jsx_runtime.jsx)(App, { api }), root);
   }
   function App({ api }) {
     return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
       Button2,
       {
         onClick: () => {
-          api.alert(`Hello my dear ${api.context.user?.firstName}`);
+          var _a16;
+          api.alert(`Hello my dear ${(_a16 = api.context.user) == null ? void 0 : _a16.firstName}`);
         },
         children: "Open Alert"
       }
     );
   }
-  self.renderUsingReact = renderUsingReact;
+  globalThis.renderUsingReact = renderUsingReact;
 })();
 /*! Bundled license information:
 
