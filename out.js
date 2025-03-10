@@ -1141,7 +1141,7 @@
             }
             return dispatcher.useContext(Context, unstable_observedBits);
           }
-          function useState(initialState) {
+          function useState2(initialState) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useState(initialState);
           }
@@ -1161,7 +1161,7 @@
             var dispatcher = resolveDispatcher();
             return dispatcher.useLayoutEffect(create, deps);
           }
-          function useCallback(callback, deps) {
+          function useCallback2(callback, deps) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useCallback(callback, deps);
           }
@@ -1722,7 +1722,7 @@
           exports.isValidElement = isValidElement2;
           exports.lazy = lazy;
           exports.memo = memo;
-          exports.useCallback = useCallback;
+          exports.useCallback = useCallback2;
           exports.useContext = useContext;
           exports.useDebugValue = useDebugValue;
           exports.useEffect = useEffect;
@@ -1731,7 +1731,7 @@
           exports.useMemo = useMemo;
           exports.useReducer = useReducer;
           exports.useRef = useRef2;
-          exports.useState = useState;
+          exports.useState = useState2;
           exports.version = ReactVersion;
         })();
       }
@@ -2592,7 +2592,7 @@
           var HostPortal = 4;
           var HostComponent = 5;
           var HostText = 6;
-          var Fragment = 7;
+          var Fragment2 = 7;
           var Mode = 8;
           var ContextConsumer = 9;
           var ContextProvider = 10;
@@ -12210,7 +12210,7 @@
               }
             }
             function updateFragment2(returnFiber, current2, fragment, lanes, key) {
-              if (current2 === null || current2.tag !== Fragment) {
+              if (current2 === null || current2.tag !== Fragment2) {
                 var created = createFiberFromFragment(fragment, returnFiber.mode, lanes, key);
                 created.return = returnFiber;
                 return created;
@@ -12579,7 +12579,7 @@
               while (child !== null) {
                 if (child.key === key) {
                   switch (child.tag) {
-                    case Fragment: {
+                    case Fragment2: {
                       if (element.type === REACT_FRAGMENT_TYPE) {
                         deleteRemainingChildren(returnFiber, child.sibling);
                         var existing = useFiber(child, element.props.children);
@@ -16301,7 +16301,7 @@
                 var _resolvedProps2 = workInProgress2.elementType === type ? _unresolvedProps2 : resolveDefaultProps(type, _unresolvedProps2);
                 return updateForwardRef(current2, workInProgress2, type, _resolvedProps2, renderLanes2);
               }
-              case Fragment:
+              case Fragment2:
                 return updateFragment(current2, workInProgress2, renderLanes2);
               case Mode:
                 return updateMode(current2, workInProgress2, renderLanes2);
@@ -16473,7 +16473,7 @@
               case SimpleMemoComponent:
               case FunctionComponent:
               case ForwardRef:
-              case Fragment:
+              case Fragment2:
               case Mode:
               case Profiler:
               case ContextConsumer:
@@ -20221,7 +20221,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
             return fiber;
           }
           function createFiberFromFragment(elements, mode, lanes, key) {
-            var fiber = createFiber(Fragment, elements, key, mode);
+            var fiber = createFiber(Fragment2, elements, key, mode);
             fiber.lanes = lanes;
             return fiber;
           }
@@ -21979,10 +21979,10 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
               return jsxWithValidation(type, props, key, false);
             }
           }
-          var jsx2 = jsxWithValidationDynamic;
-          var jsxs = jsxWithValidationStatic;
-          exports.jsx = jsx2;
-          exports.jsxs = jsxs;
+          var jsx3 = jsxWithValidationDynamic;
+          var jsxs2 = jsxWithValidationStatic;
+          exports.jsx = jsx3;
+          exports.jsxs = jsxs2;
         })();
       }
     }
@@ -23724,6 +23724,20 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     Object.defineProperty(globalThis, name, descriptor);
   }
 
+  // src/components/common/remote-component/remote-ui/Example.tsx
+  var import_react3 = __toESM(require_react());
+
+  // src/components/common/remote-component/remote-ui/gaiiaExtension.tsx
+  var import_react_dom = __toESM(require_react_dom());
+  var import_jsx_runtime = __toESM(require_jsx_runtime());
+  function gaiiaExtension(App2) {
+    globalThis.gaiia = globalThis.gaiia || {};
+    globalThis.gaiia.renderExtension = (root, api) => {
+      (0, import_react_dom.render)(/* @__PURE__ */ (0, import_jsx_runtime.jsx)(App2, { api }), root);
+    };
+    return globalThis.gaiia;
+  }
+
   // node_modules/@remote-dom/react/build/esm/component.mjs
   var import_react = __toESM(require_react(), 1);
   function createRemoteComponent(tag, Element3 = customElements.get(tag), {
@@ -23803,9 +23817,6 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     if (Array.isArray(value)) return [...value];
     return [value];
   }
-
-  // src/domain/workforce/pages/overview/remote/remoteUI.tsx
-  var import_react_dom = __toESM(require_react_dom());
 
   // node_modules/@remote-dom/core/build/esm/elements/RemoteEvent.mjs
   var RemoteEvent = class extends CustomEvent {
@@ -24348,37 +24359,48 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     }
   };
 
-  // src/domain/workforce/pages/overview/remote/element.ts
+  // src/components/common/remote-component/HostComponentsDefinition.ts
   var Button = createRemoteElement({
     events: ["click"]
   });
+  var Text2 = createRemoteElement({
+    properties: {
+      weight: {
+        type: String
+      }
+    }
+  });
   customElements.define("ui-button", Button);
+  customElements.define("ui-text", Text2);
   customElements.define("remote-root", RemoteRootElement);
   customElements.define("remote-fragment", RemoteFragmentElement);
 
-  // src/domain/workforce/pages/overview/remote/remoteUI.tsx
-  var import_jsx_runtime = __toESM(require_jsx_runtime());
+  // src/components/common/remote-component/remote-ui/RemoteComponents.tsx
   var Button2 = createRemoteComponent("ui-button", Button, {
     eventProps: {
       onClick: { event: "click" }
     }
   });
-  function renderUsingReact(root, api) {
-    (0, import_react_dom.render)(/* @__PURE__ */ (0, import_jsx_runtime.jsx)(App, { api }), root);
-  }
-  function App({ api }) {
-    return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
-      Button2,
-      {
-        onClick: () => {
-          var _a16;
-          api.alert(`Hello my dear ${(_a16 = api.context.user) == null ? void 0 : _a16.firstName}`);
-        },
-        children: "Open Alert"
-      }
-    );
-  }
-  globalThis.renderUsingReact = renderUsingReact;
+  var Text3 = createRemoteComponent("ui-text", Text2);
+
+  // src/components/common/remote-component/remote-ui/Example.tsx
+  var import_jsx_runtime2 = __toESM(require_jsx_runtime());
+  var Example_default = gaiiaExtension(function App({ api }) {
+    var _a16;
+    const [count, setCount] = (0, import_react3.useState)(0);
+    const handleClick = (0, import_react3.useCallback)(() => {
+      var _a17;
+      console.log(`Clicked by ${(_a17 = api.context.user) == null ? void 0 : _a17.firstName}`);
+      setCount((previousCount) => previousCount + 1);
+    }, [(_a16 = api.context.user) == null ? void 0 : _a16.firstName]);
+    return /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(import_jsx_runtime2.Fragment, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(Text3, { children: [
+        "Count: ",
+        /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(Text3, { weight: "semibold", children: count })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(Button2, { onClick: handleClick, children: "+" })
+    ] });
+  });
 })();
 /*! Bundled license information:
 
