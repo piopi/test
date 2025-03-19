@@ -26858,6 +26858,7 @@
   var ExtensionApiContext = (0, import_react3.createContext)(null);
   var gaiiaExtension = (target, App) => {
     globalThis.gaiia = globalThis.gaiia || {};
+    globalThis.gaiia[target] = globalThis.gaiia[target] || {};
     globalThis.gaiia[target].render = (root, api) => {
       try {
         (0, import_client.createRoot)(root).render(
